@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
 
 	Victor backClimb = new Victor(0);
 	
-	Victor trippleClimber = new Victor(2);
+	Victor tripleClimber = new Victor(2);
 	
 	Victor leftintake = new Victor(5);
 	Victor rightintake = new Victor(6);
@@ -90,7 +90,7 @@ public class Robot extends IterativeRobot {
 	    rightDrive.set(leftStickValue);
 	    
 	    frontUpAndDown.set(rightStickValue);
-	    
+
 	    // Left Intakes pulls cube in 
 	    
 	    if (xboxcontroller.getAButton())
