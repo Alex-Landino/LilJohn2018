@@ -77,11 +77,11 @@ public class Robot extends IterativeRobot {
 	
 		//Drive
 		  
-		double leftStickValue = ( xboxcontroller).getX(GenericHID.Hand.kLeft);	
+		double leftStickValue = xboxcontroller.getX(GenericHID.Hand.kLeft);	
 		
 		//Lift
 		
-		double rightStickValue = xboxcontroller.getRawAxis(5);
+		double rightStickValue = xboxcontroller.getY(GenericHID.Hand.kLeft);
 			
 				
 		//Run left front motor at speed 0
@@ -90,120 +90,53 @@ public class Robot extends IterativeRobot {
 	    rightDrive.set(leftStickValue);
 	    
 	    frontUpAndDown.set(rightStickValue);
-
-	
 	    
 	    // Left Intakes pulls cube in 
 	    
-	    if (xboxcontroller.getAButton(1);
+	    if (xboxcontroller.getAButton())
 	    {
 	        leftintake.set(-1);
-	    }
-	  
-
-	    if (XboxController.getRawB)
-	  
-	    
-	    // Right Intakes pulls cube in
-	    
-	    if (XboxController.getRawButton(1))
-	    {
-	        rightintake.set(-1);
-	    }
-	    else 
-	    {
-	        rightintake.set(0);
-	    }
-	    
-       
-	    
-	    
+	        rightintake.set(1);
+	    }else{
+	    	leftintake.set(0);
+	    	rightintake.set(0);
+	    }	    
 	    
 	    // Left Intakes shoots cube out 
-	    
-	    if (XboxController.getRawButton(2))
+	    if (xboxcontroller.getBButton())
 	    {
 	        leftintake.set(1);
+	        rightintake.set(-1);
 	    }
-	    else 
-	    {
+	    else{
 	    	leftintake.set(0);
-	  
-	    } 
-	   
-	   
-	    
-	    
-	    
-	    // Right Intakes shoots cube out
-	    
-	    if (XboxController.getRawButton(2))
-	    {
-	        rightintake.set(1);
-	    }
-	    else 
-	    {
-	        rightintake.set(0);
-	    }
-	    
-	    
-	    
-	    
+	    	rightintake.set(0);
+	    }	    
 	    
 	    //Climb 
-	    
-	    //Climb up
-	    
-	    if (XboxController.getRawButton(5))
-	    {
+	    //Climb up (left bumper)
+	    if (xboxcontroller.getBumper(GenericHID.Hand.kLeft))
 	        backClimb.set(1);
-	    }
 	    else
-	    {
-	    	backClimb.set(0);
-	    }
+	    	backClimb.set(0);	    
 	    
-	  
-	    
-	    
-	    
-	    //Climb down
-	    
-	    if (XboxController.getRawButton(6))
-	    {
+	    //Climb down (right bumper)
+	    if (xboxcontroller.getBumper(GenericHID.Hand.kRight))
 	    	backClimb.set(-1);
-	    }
-	    else
-	    {	
-	    	backClimb.set(0);
-		}
+	    else	
+	    	backClimb.set(
 	    
-	    // Trippleclimb X
-	    if(XboxController.getRawButton(3))
-	    {
-	    	trippleClimber.set(1);
-	    }
+	    // Tripleclimb X (down)
+	    if(xboxcontroller.getXButton())
+	    	tripleClimber.set(1);
 	    else
-	    	trippleClimber.set(-0);
-	    {
-	    	
-	    }
+	    	tripleClimber.set(0);
 
-	    // Trippleclimb Y
-	    if(XboxController.getRawButton(4))
-	    {
-	    	trippleClimber.set(-1);
-	    }
+	    // Tripleclimb Y (up)
+	    if(xboxcontroller.getYButton())
+	    	tripleClimber.set(-1);
 	    else 
-	    	trippleClimber.set(0);
-	    } 
-	    
-	    
-
-	    
-	  
-	
-	
+	    	tripleClimber.set(0);
 
 	/**
 	 * This function is called periodically during test mode.
