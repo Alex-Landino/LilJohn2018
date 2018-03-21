@@ -124,7 +124,7 @@ public class Robot extends IterativeRobot {
 	    if (xboxcontroller.getBumper(GenericHID.Hand.kRight))
 	    	backClimb.set(-1);
 	    else	
-	    	backClimb.set(
+	    	backClimb.set(0);
 	    
 	    // Tripleclimb X (down)
 	    if(xboxcontroller.getXButton())
@@ -138,6 +138,8 @@ public class Robot extends IterativeRobot {
 	    else 
 	    	tripleClimber.set(0);
 
+	}
+	 
 	/**
 	 * This function is called periodically during test mode.
 	 */
